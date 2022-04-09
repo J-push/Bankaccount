@@ -8,11 +8,13 @@ private:
 
 public:
 	Account(int _ID, int _money, char* _name);
-	Account(Account& _copy);
+	Account(const Account& _copy);
+	Account& operator=(const Account& _copy);
+
 	int GetAccID() const;
 	virtual void Deposit(int _money);
 	int Withdraw(int _money);
-	virtual void ShowAccountInfo() const;
+	void ShowAccountInfo() const;
 	~Account();
 };
 

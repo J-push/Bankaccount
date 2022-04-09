@@ -2,18 +2,7 @@
 #include <cstring>
 #include "Account.h"
 #include "AccountHandler.h"
-
-using namespace std;
-
-enum select
-{
-    MAKE=1, 
-    DEPOSIT, 
-    WITHDRAW, 
-    INQUIRE,
-    EXIT
-};
-
+#include "BankingCommonDecl.h"
 
 int main()
 {

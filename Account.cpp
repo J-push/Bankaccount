@@ -11,11 +11,22 @@ Account::Account(int _ID, int _money, char* _name)
 	strcpy_s(cusName, strlen(_name) + 1, _name);
 }
 
-Account::Account(Account& _copy)
+Account::Account(const Account& _copy)
 	: accountID(_copy.accountID), balance(_copy.balance)
 {
 	cusName = new char[strlen(_copy.cusName) + 1];
 	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
+}
+
+Account& Account::operator=(const Account& _copy)
+{
+	accountID = _copy.accountID;
+	balance = _copy.balance;
+
+	delete[]cusName;
+	cusName = new char[strlen(_copy.cusName) + 1];
+	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
+	return *this;
 }
 
 int Account::GetAccID() const

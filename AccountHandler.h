@@ -1,10 +1,13 @@
 #pragma once
 #include "Account.h"
+#include "AccountArray.h"
+#include "BankingCommonDecl.h"
+#include "AccountArray.h"
 
 class AccountHandler
 {
 private:
-	Account* accArr[100] = {0, };
+	BoundCheckAccountPtrArray* accArr[100] = {0, };
 	int accountNum;
 
 public:
@@ -18,17 +21,4 @@ public:
 	virtual void ShowAllAccountInfo();
 	void exit();
 	~AccountHandler();
-};
-
-enum Creditlevel
-{
-	LEVEL_A = 7,
-	LEVEL_B = 4,
-	LEVEL_C = 2
-};
-
-enum AccountSort
-{
-	NORMAL = 1,
-	CREDIT = 2
 };
