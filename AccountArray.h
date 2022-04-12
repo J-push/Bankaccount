@@ -11,7 +11,9 @@ private:
 	ACCOUNT_PTR* arr;
 	int arrlen;
 	BoundCheckAccountPtrArray(const BoundCheckAccountPtrArray& arr);
+	//대입 원천적으로 막음
 	BoundCheckAccountPtrArray& operator=(const BoundCheckAccountPtrArray& arr){}
+	//복사 원천적으로 막음
 
 public:
 	BoundCheckAccountPtrArray(int _len = 100);

@@ -1,6 +1,7 @@
 #include "AccountHandler.h"
 #include "NormalAccount.h"
 #include "HighCreditAccount.h"
+#include "AccountArray.h"
 #include <iostream>
 
 using namespace std;
@@ -8,7 +9,6 @@ using namespace std;
 AccountHandler::AccountHandler()
     :accountNum(0)
 {
-
 }
 
 void AccountHandler::Menu() const
