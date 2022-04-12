@@ -1,6 +1,6 @@
 #include "NormalAccount.h"
 
-NormalAccount::NormalAccount(int _ID, int _money, char* _name, int _rate)
+NormalAccount::NormalAccount(int _ID, int _money, my::string _name, int _rate)
 	:Account(_ID, _money, _name), rate(_rate)
 {
 

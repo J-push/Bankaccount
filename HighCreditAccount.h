@@ -8,7 +8,7 @@ private:
 	int plusrate;
 
 public:
-	HighCreditAccount(int _ID, int _money, char* _name, int _rate, int _plusrate);
-	virtual void Deposit(int money);
+	HighCreditAccount(int _ID, int _money, my::string _name, int _rate, int _plusrate);
+	virtual void Deposit(int _money);
 };
 

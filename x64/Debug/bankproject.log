@@ -1,8 +1,5 @@
-﻿  Account.cpp
-  AccountArray.cpp
+﻿  AccountArray.cpp
   AccountHandler.cpp
-  HighCreditAccount.cpp
   main.cpp
-  NormalAccount.cpp
   코드를 생성하고 있습니다...
   bankproject.vcxproj -> C:\JustPush\bankproject\x64\Debug\bankproject.exe

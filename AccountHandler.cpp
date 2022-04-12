@@ -42,7 +42,7 @@ void AccountHandler::MakeAccount()
 void AccountHandler::MakeNormalAccount()
 {
     int id = 0;
-    char name[30] = { 0, };
+    my::string name;
     int money = 0;
     int rate = 0;
 
@@ -63,7 +63,7 @@ void AccountHandler::MakeNormalAccount()
 void AccountHandler::MakeCreditAccount()
 {
     int id = 0;
-    char name[30] = { 0, };
+    my::string name;
     int money = 0;
     int rate = 0;
     int creditLevel = 0;

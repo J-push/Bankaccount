@@ -4,30 +4,29 @@
 
 using namespace std;
 
-Account::Account(int _ID, int _money, char* _name)
+Account::Account(int _ID, int _money, my::string _name)
 	: accountID(_ID), balance(_money)
 {
-	cusName = new char[strlen(_name) + 1];
-	strcpy_s(cusName, strlen(_name) + 1, _name);
+	cusName = _name;
 }
 
-Account::Account(const Account& _copy)
-	: accountID(_copy.accountID), balance(_copy.balance)
-{
-	cusName = new char[strlen(_copy.cusName) + 1];
-	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
-}
+//Account::Account(const Account& _copy)
+//	: accountID(_copy.accountID), balance(_copy.balance)
+//{
+//	cusName = new char[strlen(_copy.cusName) + 1];
+//	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
+//}
 
-Account& Account::operator=(const Account& _copy)
-{
-	accountID = _copy.accountID;
-	balance = _copy.balance;
-
-	delete[]cusName;
-	cusName = new char[strlen(_copy.cusName) + 1];
-	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
-	return *this;
-}
+//Account& Account::operator=(const Account& _copy)
+//{
+//	accountID = _copy.accountID;
+//	balance = _copy.balance;
+//
+//	delete[]cusName;
+//	cusName = new char[strlen(_copy.cusName) + 1];
+//	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
+//	return *this;
+//}
 
 int Account::GetAccID() const
 {
@@ -55,7 +54,7 @@ void Account::ShowAccountInfo() const
 	cout << "ภÜ พื: " << balance << endl;
 }
 
-Account::~Account()
-{
-	delete[]cusName;
-}
+//Account::~Account()
+//{
+//	delete[]cusName;
+//}

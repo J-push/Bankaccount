@@ -6,7 +6,7 @@
 class AccountHandler
 {
 private:
-	BoundCheckAccountPtrArray accArr;
+	BoundCheckArray<Account*> accArr;
 	int accountNum;
 
 public:
