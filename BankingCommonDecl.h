@@ -7,6 +7,7 @@ using namespace std;
 enum select
 {
     MAKE = 1,
+	DELETE,
     DEPOSIT,
     WITHDRAW,
     INQUIRE,

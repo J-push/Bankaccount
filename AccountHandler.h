@@ -2,23 +2,23 @@
 #include "Account.h"
 #include "AccountArray.h"
 #include "BankingCommonDecl.h"
-#include "AccountArray.h"
 
 class AccountHandler
 {
 private:
-	BoundCheckAccountPtrArray* accArr[100] = {0, };
+	BoundCheckArray<Account*> accArr;
 	int accountNum;
 
 public:
 	AccountHandler();
-	virtual void Menu() const;
-	virtual void MakeAccount();
-	virtual void MakeNormalAccount();
-	virtual void MakeCreditAccount();
-	virtual void Deposit();
-	virtual void Withdraw();
-	virtual void ShowAllAccountInfo();
+	void Menu() const;
+    void MakeAccount();
+	void MakeNormalAccount();
+	void MakeCreditAccount();
+	void DeleteAccount();
+	void Deposit();
+	void Withdraw();
+	void ShowAllAccountInfo();
 	void exit();
 	~AccountHandler();
 };

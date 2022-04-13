@@ -1,51 +1,56 @@
 #include "Account.h"
-#include <cstring>
-#include <iostream>
+#include "BankingCommonDecl.h"
+#include "AccountExcpetion.h"
 
-using namespace std;
-
-Account::Account(int _ID, int _money, char* _name)
-	: accountID(_ID), balance(_money)
+Account::Account(int ID, int money, my::string name)
+	: accountID(ID), balance(money),cusName(name)
 {
-	cusName = new char[strlen(_name) + 1];
-	strcpy_s(cusName, strlen(_name) + 1, _name);
 }
 
-Account::Account(const Account& _copy)
-	: accountID(_copy.accountID), balance(_copy.balance)
-{
-	cusName = new char[strlen(_copy.cusName) + 1];
-	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
-}
+//Account::Account(const Account& _copy)
+//	: accountID(_copy.accountID), balance(_copy.balance)
+//{
+//	cusName = new char[strlen(_copy.cusName) + 1];
+//	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
+//}
 
-Account& Account::operator=(const Account& _copy)
-{
-	accountID = _copy.accountID;
-	balance = _copy.balance;
-
-	delete[]cusName;
-	cusName = new char[strlen(_copy.cusName) + 1];
-	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
-	return *this;
-}
+//Account& Account::operator=(const Account& _copy)
+//{
+//	accountID = _copy.accountID;
+//	balance = _copy.balance;
+//
+//	delete[]cusName;
+//	cusName = new char[strlen(_copy.cusName) + 1];
+//	strcpy_s(cusName, strlen(_copy.cusName) + 1, _copy.cusName);
+//	return *this;
+//}
 
 int Account::GetAccID() const
 {
 	return accountID;
 }
 
-void Account::Deposit(int _money)
+void Account::Deposit(int money)
 {
-	balance += _money;
+	if (money < 0)
+	{
+		throw LessValueException(money);
+	}
+	balance += money;
 }
 
-int Account::Withdraw(int _money) // 출금액 반환!
+int Account::Withdraw(int money) // 출금액 반환!
 {
-	if (balance < _money)
-		return 0;
-
-	balance -= _money;
-	return _money;
+	if (money < 0)
+	{
+		throw LessValueException(money);
+	}
+	if (balance < money)
+	{
+		throw OverOutputException(balance, money);
+	}
+	balance -= money;
+	return money;
 }
 
 void Account::ShowAccountInfo() const
@@ -55,7 +60,7 @@ void Account::ShowAccountInfo() const
 	cout << "잔 액: " << balance << endl;
 }
 
-Account::~Account()
-{
-	delete[]cusName;
-}
+//Account::~Account()
+//{
+//	delete[]cusName;
+//}

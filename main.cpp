@@ -19,6 +19,9 @@ int main()
         case MAKE:
             owner.MakeAccount();
             break;
+        case DELETE:
+            owner.DeleteAccount();
+            break;
         case DEPOSIT:
             owner.Deposit();
             break;
@@ -33,6 +36,7 @@ int main()
             return 0;
         default:
             cout << "잘못된 번호를 입력하셨습니다" << endl;
+            return 0;
         }
     }
     return 0;
