@@ -11,13 +11,14 @@ private:
 
 public:
 	AccountHandler();
-	virtual void Menu() const;
-	virtual void MakeAccount();
-	virtual void MakeNormalAccount();
-	virtual void MakeCreditAccount();
-	virtual void Deposit();
-	virtual void Withdraw();
-	virtual void ShowAllAccountInfo();
+	void Menu() const;
+    void MakeAccount();
+	void MakeNormalAccount();
+	void MakeCreditAccount();
+	void DeleteAccount();
+	void Deposit();
+	void Withdraw();
+	void ShowAllAccountInfo();
 	void exit();
 	~AccountHandler();
 };

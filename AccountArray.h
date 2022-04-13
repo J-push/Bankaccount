@@ -18,28 +18,28 @@ private:
 	//복사 원천적으로 막음
 
 public:
-	BoundCheckArray(int _len = 100)
-		:arrlen(_len)
+	BoundCheckArray(int len = 100)
+		:arrlen(len)
 	{
-		arr = new T[_len];
+		arr = new T[len];
 	}
-	T& operator[](int _idx)
+	T& operator[](int idx)
 	{
-		if (_idx < 0 || _idx >= arrlen)
+		if (idx < 0 || idx >= arrlen)
 		{
 			cout << "너무 지나친데 " << endl;
 			exit(1);
 		}
-		return arr[_idx];
+		return arr[idx];
 	}
-	T operator[](int _idx) const
+	T operator[](int idx) const
 	{
-		if (_idx < 0 || _idx >= arrlen)
+		if (idx < 0 || idx >= arrlen)
 		{
 			cout << "너무 지나친데 " << endl;
 			exit(1);
 		}
-		return arr[_idx];
+		return arr[idx];
 	}
 
 	int GetArrLen() const

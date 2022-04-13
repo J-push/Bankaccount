@@ -1,13 +1,13 @@
 #include "HighCreditAccount.h"
 
-HighCreditAccount::HighCreditAccount(int _ID, int _money, my::string _name, int _rate, int _plusrate)
-	:NormalAccount(_ID, _money, _name, _rate), plusrate(_plusrate)
+HighCreditAccount::HighCreditAccount(int ID, int money, my::string name, int rate, int plusrate)
+	:NormalAccount(ID, money, name, rate), plusrate(plusrate)
 {
 
 }
 
-void HighCreditAccount::Deposit(int _money)
+void HighCreditAccount::Deposit(int money)
 {
-	NormalAccount::Deposit(_money);
-	NormalAccount::Deposit(_money * (plusrate / 100));
+	NormalAccount::Deposit(money);
+	NormalAccount::Deposit(money * (plusrate / 100));
 }

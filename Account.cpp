@@ -1,13 +1,10 @@
 #include "Account.h"
-#include <cstring>
-#include <iostream>
+#include "BankingCommonDecl.h"
+#include "AccountExcpetion.h"
 
-using namespace std;
-
-Account::Account(int _ID, int _money, my::string _name)
-	: accountID(_ID), balance(_money)
+Account::Account(int ID, int money, my::string name)
+	: accountID(ID), balance(money),cusName(name)
 {
-	cusName = _name;
 }
 
 //Account::Account(const Account& _copy)
@@ -33,18 +30,27 @@ int Account::GetAccID() const
 	return accountID;
 }
 
-void Account::Deposit(int _money)
+void Account::Deposit(int money)
 {
-	balance += _money;
+	if (money < 0)
+	{
+		throw LessValueException(money);
+	}
+	balance += money;
 }
 
-int Account::Withdraw(int _money) // 출금액 반환!
+int Account::Withdraw(int money) // 출금액 반환!
 {
-	if (balance < _money)
-		return 0;
-
-	balance -= _money;
-	return _money;
+	if (money < 0)
+	{
+		throw LessValueException(money);
+	}
+	if (balance < money)
+	{
+		throw OverOutputException(balance, money);
+	}
+	balance -= money;
+	return money;
 }
 
 void Account::ShowAccountInfo() const

@@ -15,10 +15,11 @@ void AccountHandler::Menu() const
 {
     cout << "-----Menu-----" << endl;
     cout << "1.계좌개설" << endl;
-    cout << "2.입금" << endl;
-    cout << "3.출금" << endl;
-    cout << "4.계좌정보 전체 출력" << endl;
-    cout << "5.프로그램 종료" << endl;
+    cout << "2.계좌삭제" << endl;
+    cout << "3.입금" << endl;
+    cout << "4.출금" << endl;
+    cout << "5.계좌정보 전체 출력" << endl;
+    cout << "6.프로그램 종료" << endl;
 }
 
 void AccountHandler::MakeAccount()
@@ -100,19 +101,58 @@ void AccountHandler::Deposit()
     cout << "[입 금]" << endl;
     cout << "계좌ID : ";
     cin >> id;
-    cout << "입금액 : ";
-    cin >> money;
 
+    while (1)
+    {
+        cout << "입금액 : ";
+        cin >> money;
+
+        try
+        {
+            for (int i = 0; i < accountNum; i++)
+            {
+                if (accArr[i]->GetAccID() == id)
+                {
+                    accArr[i]->Deposit(money);
+                    cout << "입금완료" << endl;
+                    return;
+                }
+            }
+            cout << "유효하지 않은 ID 입니다." << endl;
+            return;
+        }
+        catch (LessValueException& expt)
+        {
+            expt.ShowException();
+            cout << "입금액 재입력 : " << endl;
+        }
+    }
+}
+
+void AccountHandler::DeleteAccount()
+{
+    int id = 0;
+    cout << "계좌번호 입력 : ";
+    cin >> id;
     for (int i = 0; i < accountNum; i++)
     {
         if (accArr[i]->GetAccID() == id)
         {
-            accArr[i]->Deposit(money);
-            cout << "입금완료" << endl;
+            delete accArr[i];
+            for (int j = i + 1; j < accountNum; j++)
+            {
+                accArr[j - 1] = accArr[j];
+                if (j == strlen((char*)accArr[i])-1)
+                //array 길이 100
+                {
+                    accArr[j] = nullptr;
+                }
+            }
+            cout << i + 1 << "번 계좌가 소멸되었습니다." << endl;
+            accountNum--;
             return;
         }
     }
-    cout << "유효하지 않은 ID 입니다." << endl;
 }
 
 void AccountHandler::Withdraw()
@@ -122,23 +162,37 @@ void AccountHandler::Withdraw()
     cout << "[출 금]" << endl;
     cout << "계좌ID: ";
     cin >> id;
-    cout << "출금액: ";
-    cin >> money;
 
-    for (int i = 0; i < accountNum; i++)
+    while (1)
     {
-        if (accArr[i]->GetAccID() == id)
+        cout << "출금액: ";
+        cin >> money;
+
+        try
         {
-            if (accArr[i]->Withdraw(money) == 0)
+            for (int i = 0; i < accountNum; i++)
             {
-                cout << "잔액이 부족합니다" << endl;
-                return;
+                if (accArr[i]->GetAccID() == id)
+                {
+                    accArr[i]->Withdraw(money);
+                    cout << "출금완료" << endl;
+                    return;
+                }
             }
-            cout << "출금완료" << endl;
+            cout << "없는 계좌번호입니다" << endl;
             return;
         }
+        catch (OverOutputException& expt)
+        {
+            expt.ShowException();
+            cout << "출금액 재입력 : " << endl;
+        }
+        catch (LessValueException& expt)
+        {
+            expt.ShowException();
+            cout << "출금액 재입력 : " << endl;
+        }
     }
-    cout << "없는 계좌번호입니다" << endl;
 }
 
 
@@ -162,6 +216,7 @@ void AccountHandler::exit()
         delete accArr[i];
     return ;
 }
+
 
 AccountHandler::~AccountHandler()
 {

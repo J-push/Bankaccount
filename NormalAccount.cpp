@@ -1,13 +1,17 @@
 #include "NormalAccount.h"
 
-NormalAccount::NormalAccount(int _ID, int _money, my::string _name, int _rate)
-	:Account(_ID, _money, _name), rate(_rate)
+NormalAccount::NormalAccount(int ID, int money, my::string name, int rate)
+	:Account(ID, money, name), rate(rate)
 {
 
 }
 
-void NormalAccount::Deposit(int _money)
+void NormalAccount::Deposit(int money)
 {
-	Account::Deposit(_money);	//원금을 추가하고
-	Account::Deposit(_money * (rate / 100)); // 이자추가
+	if (money < 0)
+	{
+		throw LessValueException(money);
+	}
+	Account::Deposit(money);	//원금을 추가하고
+	Account::Deposit(money * (rate / 100)); // 이자추가
 }

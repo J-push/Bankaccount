@@ -1,13 +1,14 @@
 #pragma once
 #include "Account.h"
+#include "AccountExcpetion.h"
 
 class NormalAccount : public Account
 {
 private:
 	int rate;
 public:
-	NormalAccount(int _ID, int _money, my::string _name, int _rate);
+	NormalAccount(int ID, int money, my::string name, int rate);
 	//입금을 해야하니까..
-	virtual void Deposit(int _money);
+	virtual void Deposit(int money);
 };
 

@@ -9,14 +9,10 @@ private:
 	my::string cusName;
 
 public:
-	Account(int _ID, int _money, my::string _name);
-	//Account(const Account& _copy);
-	//Account& operator=(const Account& _copy);
-
+	Account(int ID, int money, my::string name);
 	int GetAccID() const;
-	virtual void Deposit(int _money);
-	int Withdraw(int _money);
+	virtual void Deposit(int money);
+	int Withdraw(int money);
 	void ShowAccountInfo() const;
-	/*~Account();*/
 };
 
